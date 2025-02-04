@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Occurrence Counter</title>
+</head>
+<body>
+
+    <h1>Count Character Occurrences</h1>
+    <label for="stringInput">Enter a string:</label>
+    <input type="text" id="stringInput" />
+    <button onclick="countCharacterOccurrences()">Count</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function countCharacterOccurrences() {
+            const inputString = document.getElementById('stringInput').value;
+            const charCount = {};
+
+            for (const char of inputString) {
+                if (charCount[char]) {
+                    charCount[char]++;
+                } else {
+                    charCount[char] = 1;
+                }
+            }
+
+            document.getElementById('result').innerText = JSON.stringify(charCount);
+        }
+    </script>
+
+</body>
+</html>
