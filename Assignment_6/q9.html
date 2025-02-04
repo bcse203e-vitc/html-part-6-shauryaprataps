@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCM Calculator</title>
+</head>
+<body>
+
+    <h1>Least Common Multiple (LCM) Calculator</h1>
+    <label for="num1Input">Enter first number:</label>
+    <input type="number" id="num1Input" />
+    <br>
+    <label for="num2Input">Enter second number:</label>
+    <input type="number" id="num2Input" />
+    <br>
+    <button onclick="findLCM()">Find LCM</button>
+
+    <h2 id="lcmResult"></h2>
+
+    <script>
+        function findGCD(a, b) {
+            if (b === 0) return a;
+            return findGCD(b, a % b);
+        }
+
+        function findLCM() {
+            const num1 = parseInt(document.getElementById('num1Input').value);
+            const num2 = parseInt(document.getElementById('num2Input').value);
+
+            if (isNaN(num1) || isNaN(num2) || num1 <= 0 || num2 <= 0) {
+                document.getElementById('lcmResult').innerText = "Please enter valid positive integers.";
+                return;
+            }
+
+            const gcd = findGCD(num1, num2);
+            const lcm = Math.abs(num1 * num2) / gcd;
+
+            document.getElementById('lcmResult').innerText = `LCM of ${num1} and ${num2} is: ${lcm}`;
+        }
+    </script>
+
+</body>
+</html>
