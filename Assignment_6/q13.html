@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Smallest and Largest</title>
+</head>
+<body>
+
+    <h1>Find Second Smallest and Second Largest</h1>
+    <label for="arrayInput">Enter numbers (comma-separated):</label>
+    <input type="text" id="arrayInput" />
+    <button onclick="findSecondSmallestAndLargest()">Find</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function findSecondSmallestAndLargest() {
+            const arr = document.getElementById('arrayInput').value.split(',').map(Number);
+            let smallest = Infinity, secondSmallest = Infinity;
+            let largest = -Infinity, secondLargest = -Infinity;
+
+            for (let num of arr) {
+                if (num < smallest) {
+                    secondSmallest = smallest;
+                    smallest = num;
+                } else if (num < secondSmallest && num !== smallest) {
+                    secondSmallest = num;
+                }
+
+                if (num > largest) {
+                    secondLargest = largest;
+                    largest = num;
+                } else if (num > secondLargest && num !== largest) {
+                    secondLargest = num;
+                }
+            }
+
+            document.getElementById('result').innerText = `Second Smallest: ${secondSmallest}, Second Largest: ${secondLargest}`;
+        }
+    </script>
+
+</body>
+</html>
