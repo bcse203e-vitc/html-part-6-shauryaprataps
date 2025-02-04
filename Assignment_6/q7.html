@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+</head>
+<body>
+
+    <h1>Fibonacci Series Generator</h1>
+    <label for="nInput">Enter N:</label>
+    <input type="number" id="nInput" min="1" />
+    <button onclick="generateFibonacci()">Generate</button>
+
+    <h2 id="fibonacciResult"></h2>
+
+    <script>
+        function generateFibonacci() {
+            const N = parseInt(document.getElementById('nInput').value);
+            if (isNaN(N) || N < 1) {
+                document.getElementById('fibonacciResult').innerText = "Please enter a valid positive integer.";
+                return;
+            }
+            let fibSeries = [];
+            let a = 0, b = 1;
+            for (let i = 0; i < N; i++) {
+                fibSeries.push(a);
+                let next = a + b;
+                a = b;
+                b = next;
+            }
+
+            document.getElementById('fibonacciResult').innerText = fibSeries.join(', ');
+        }
+        function fibonacciRecursive(n) {
+            if (n <= 0) return 0;
+            if (n === 1) return 1;
+            return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+        }
+    </script>
+
+</body>
+</html>
