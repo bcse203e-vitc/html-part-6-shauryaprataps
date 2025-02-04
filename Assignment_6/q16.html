@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Array Sort</title>
+</head>
+<body>
+
+    <h1>Sort an Array</h1>
+    <label for="sortInput">Enter numbers (comma-separated):</label>
+    <input type="text" id="sortInput" />
+    <br>
+    <label for="orderSelect">Select order:</label>
+    <select id="orderSelect">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
+    <button onclick="sortArray()">Sort</button>
+
+    <h2 id="sortResult"></h2>
+
+    <script>
+        function sortArray() {
+            const arr = document.getElementById('sortInput').value.split(',').map(Number);
+            const order = document.getElementById('orderSelect').value;
+
+            for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = 0; j < arr.length - 1 - i; j++) {
+                    if ((order === 'asc' && arr[j] > arr[j + 1]) || (order === 'desc' && arr[j] < arr[j + 1])) {
+                       
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                    }
+                }
+            }
+
+            document.getElementById('sortResult').innerText = `Sorted Array: [${arr.join(', ')}]`;
+        }
+    </script>
+
+</body>
+</html>
