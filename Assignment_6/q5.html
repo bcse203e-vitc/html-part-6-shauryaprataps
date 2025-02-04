@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Digits in a Number</title>
+  
+</head>
+<body>
+
+    <h1>Count Digits in a Number</h1>
+    <label for="numberInput">Enter an integer:</label>
+    <input type="number" id="numberInput" />
+    <button onclick="countDigits()">Count Digits</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function countDigits() {
+            const numberInput = document.getElementById('numberInput').value;
+            const number = parseInt(numberInput, 10);
+
+            if (isNaN(number)) {
+                document.getElementById('result').innerText = "Please enter a valid integer.";
+                return;
+            }
+            const numString = Math.abs(number).toString();
+            
+            const digitCount = numString.length;
+
+            document.getElementById('result').innerText = `The number of digits is: ${digitCount}`;
+        }
+    </script>
+
+</body>
+</html>
