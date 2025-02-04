@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Even or Odd</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Check If a Number is Even or Odd</h1>
+    
+    <div>
+        <label for="number">Enter a Number:</label>
+        <input type="number" id="number">
+        
+        <button onclick="checkEvenOdd()">Check Even or Odd</button>
+    </div>
+
+    <div class="result" id="singleResult"></div>
+
+    <h1>Separate Even and Odd Numbers</h1>
+    
+    <div>
+        <label for="arrayInput">Enter Numbers (comma separated):</label>
+        <input type="text" id="arrayInput" placeholder="Enter N numbers">
+        
+        <button onclick="separateEvenOdd()">Separate Even and Odd</button>
+    </div>
+
+    <div class="result" id="arrayResult"></div>
+
+    <script >
+function checkEvenOdd() {
+    const number = parseInt(document.getElementById('number').value);
+
+
+    if (isNaN(number)) {
+        document.getElementById('singleResult').innerText = "Please enter a valid number.";
+    } else {
+        const result = (number % 2 === 0) ? "Even" : "Odd";
+        document.getElementById('singleResult').innerText = `The number ${number} is ${result}.`;
+    }
+}
+
+function separateEvenOdd() {
+    const numbers = document.getElementById('arrayInput').value.split(',')
+        .map(num => parseInt(num.trim()))
+        .filter(num => !isNaN(num));
+
+    if (numbers.length === 0) {
+        document.getElementById('arrayResult').innerText = "Please enter valid numbers.";
+        return;
+    }
+
+    const evens = numbers.filter(num => num % 2 === 0);
+    const odds = numbers.filter(num => num % 2 !== 0);
+
+    document.getElementById('arrayResult').innerText = `Evens: [${evens.join(', ')}], Odds: [${odds.join(', ')}]`;
+}
+    </script>
+</body>
+</html>
