@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reverse a Number</h1>
+    
+    <div>
+        <label for="number">Enter a Number:</label>
+        <input type="number" id="number">
+        
+        <button onclick="reverseNumber()">Reverse Number</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+function reverseNumber() {
+    const number = document.getElementById('number').value;
+
+    if (isNaN(number) || number.trim() === "") {
+        document.getElementById('result').innerText = "Please enter a valid number.";
+        return;
+    }
+
+    const reversed = number.split('').reverse().join('');
+    const isPalindrome = (number === reversed);
+
+    document.getElementById('result').innerText = `Reversed Number: ${reversed} ${isPalindrome ? '(This is a palindrome)' : ''}`;
+}
+    </script>
+</body>
+</html>
