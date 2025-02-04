@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Swapping</title>
+    
+</head>
+<body>
+    <h1>Variable Swapping </h1>
+    
+    <div>
+        <label for="a">Enter Value of A:</label>
+        <input type="number" id="a" >
+    </div>
+    <div>
+        <label for="b">Enter Value of B:</label>
+        <input type="number" id="b" >
+    </div>
+    
+    <button onclick="swapUsingArithmetic()">Swap </button>
+   
+    
+    <div style="margin-top: 30px;">
+        <p id="result1"></p>
+        <p id="result2"></p>
+    </div>
+
+    <script>
+function swapUsingArithmetic() {
+    let a = parseInt(document.getElementById('a').value);
+    let b = parseInt(document.getElementById('b').value);
+    console.log("Before swapping: a =", a, "and b =", b);
+    
+    a = a + b; 
+    b = a - b;
+    a = a - b;
+    
+    console.log("After swapping using arithmetic: a =", a, ", b =", b);
+    document.getElementById('result1').innerText = `Using Arithmetic Operations: a = ${a}, b = ${b}`;
+}
+
+    </script>
+</body>
+</html>
