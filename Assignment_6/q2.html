@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Largest Number</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .result{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find the Largest Among Three Numbers</h1>
+    
+    <div>
+        <label for="num1">Enter First Number:</label>
+        <input type="number" id="num1">
+        
+        <label for="num2">Enter Second Number:</label>
+        <input type="number" id="num2">
+        
+        <label for="num3">Enter Third Number:</label>
+        <input type="number" id="num3">
+        
+        <button onclick="findLargest()">Find Largest</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <h1>Find Largest Among N Numbers</h1>
+    
+    <div>
+        <label for="numbers">Enter Numbers (comma separated):</label>
+        <input type="text" id="numbers" placeholder="Enter N numbers">
+        
+        <button onclick="findLargestInArray()">Find Largest</button>
+    </div>
+
+    <div class="result" id="arrayResult"></div>
+
+    <script>
+function findLargest() {
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    const num3 = parseFloat(document.getElementById('num3').value);
+
+    const largest = Math.max(num1, num2, num3);
+    document.getElementById('result').innerText = `The largest number is: ${largest}`;
+}
+
+function findLargestInArray() {
+    const numbers = document.getElementById('numbers').value.split(',')
+        .map(num => parseFloat(num.trim()))
+        .filter(num => !isNaN(num)); 
+
+    if (numbers.length === 0) {
+        document.getElementById('arrayResult').innerText = "Please enter valid numbers.";
+        return;
+    }
+
+    const largest = Math.max(...numbers);
+    document.getElementById('arrayResult').innerText = `The largest number among the input is: ${largest}`;
+}
+    </script>
+</body>
+</html>
